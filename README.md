@@ -9,27 +9,27 @@
 
 # Assuming you have your final .rds object loaded in the seurat object named **'mouse'**
 
-mouse <-readRDS("FinalInputfile.rds")
+```mouse <-readRDS("FinalInputfile.rds")```
 
 # Generate these files using:
-counts_matrix <-GetAssayData(mouse, assay='RNA',slot='counts')
+```counts_matrix <-GetAssayData(mouse, assay='RNA',slot='counts')```
 
 # save matrix file using:
-writeMM(counts_matrix, file=paste0(file='matrix.mtx'))
+```writeMM(counts_matrix, file=paste0(file='matrix.mtx'))```
 
 # save pca embeddings using:
-write.csv(mouse@reductions$pca@cell.embeddings,file='pca.csv', quote=F, row.names=F)
-write.table(data.frame('gene'=rownames(counts_matrix)),file='gene_names.csv',quote=F,row.names=F,col.names=F)
+```write.csv(mouse@reductions$pca@cell.embeddings,file='pca.csv', quote=F, row.names=F)```
+```write.table(data.frame('gene'=rownames(counts_matrix)),file='gene_names.csv',quote=F,row.names=F,col.names=F)```
 
 # Save cell barcode information using:
-mouse$barcode<-colnames(mouse)
+```mouse$barcode<-colnames(mouse)```
 
 # Save UMAP reductions using:
-mouse$UMAP_1<-mouse@reductions$umap@cell.embeddings[,1]
-mouse$UMAP_2<-mouse@reductions$umap@cell.embeddings[,2]
+```mouse$UMAP_1<-mouse@reductions$umap@cell.embeddings[,1]```
+```mouse$UMAP_2<-mouse@reductions$umap@cell.embeddings[,2]```
 
 #  Finally save the metadata using:
-write.csv(mouse@meta.data,file='metadata.csv', quote=F,row.names=F)
+```write.csv(mouse@meta.data,file='metadata.csv', quote=F,row.names=F)```
 
 
 
@@ -37,7 +37,7 @@ write.csv(mouse@meta.data,file='metadata.csv', quote=F,row.names=F)
 # Now go to Jupyter Notebook to convert it into h5ad with same embeddings information
 # Code Below
 
-import numpy as np
+```import numpy as np
 import pandas as pd
 import matplotlib.pyplot as pl
 import scanpy as sc
@@ -47,7 +47,7 @@ import loompy as lmp
 import anndata
 from scipy import io
 from scipy.sparse import coo_matrix, csr_matrix
-import os
+import os```
 
 
 X= io.mmread("/data-store/iplant/home/ruchikabhat/data/CellOracle/matrix.mtx")
